@@ -1,5 +1,8 @@
 package by.gsu.com;
 
+/*
+This class considers the length of the Wi-Fi coverage area
+ */
 public class WiFiZoneMetricsCalculator {
     /**
      * Variables and constants
@@ -35,10 +38,6 @@ public class WiFiZoneMetricsCalculator {
         this.frequency = frequency;
     }
 
-    /**
-     * The resulting values
-     * @return
-     */
     public Double getTransmitterPower() {
         return transmitterPower;
     }
@@ -69,7 +68,7 @@ public class WiFiZoneMetricsCalculator {
 
     /**
      * The method considers the total system gain (Y)
-     * @return
+     * @return the result of total system gain
      */
 
     public double calculate(){
@@ -78,7 +77,7 @@ public class WiFiZoneMetricsCalculator {
 
     /**
      * Free space loss calculation method (FSL)
-     * @return
+     * @return result of free space loss
      */
     public double valuesFSL(){
         return calculate() - SOM;
@@ -86,7 +85,7 @@ public class WiFiZoneMetricsCalculator {
 
     /**
      * Method of calculating the range of Wi-Fi signal
-     * @return
+     * @return the result of the range of the Wi-Fi signal
      */
     public double length(){
         double exponent = (valuesFSL()/DENOMINATOR - DIVIDEND/DENOMINATOR_1 - Math.log10(frequency));
@@ -105,4 +104,3 @@ public class WiFiZoneMetricsCalculator {
                 ", frequency = " + frequency;
     }
 }
-
