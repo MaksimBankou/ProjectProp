@@ -1,16 +1,15 @@
 package by.gsu.com;
-
+/*
+This class creating file and recording values
+ */
 import by.gsu.com.Interface.WiFiMetricsBuilder;
-
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.logging.Logger;
 
-public class WiFiMetricsFileWiFiMetricsBuilderImpl implements WiFiMetricsBuilder {
+public class WiFiMetricsFilePropertiesWiFiMetricsBuilderImpl implements WiFiMetricsBuilder {
 
     private static Logger LOG = Logger.getLogger(WiFiZoneMetricsCalculator.class.getName());
+    private static File FILE_PATH = new File("src/main/resources/valuesResults.properties");
     /**
      * Variable of the class WiFiZoneMetricsCalculator for calling methods
      */
@@ -20,7 +19,7 @@ public class WiFiMetricsFileWiFiMetricsBuilderImpl implements WiFiMetricsBuilder
      * wiFiZoneMetricsCalculator - variable of the class WiFiZoneMetricsCalculator
      * @param wiFiZoneMetricsCalculator
      */
-    public WiFiMetricsFileWiFiMetricsBuilderImpl(WiFiZoneMetricsCalculator wiFiZoneMetricsCalculator) {
+    public WiFiMetricsFilePropertiesWiFiMetricsBuilderImpl(WiFiZoneMetricsCalculator wiFiZoneMetricsCalculator) {
         this.wiFiZoneMetricsCalculator = wiFiZoneMetricsCalculator;
     }
 
@@ -32,12 +31,12 @@ public class WiFiMetricsFileWiFiMetricsBuilderImpl implements WiFiMetricsBuilder
         /**
          * The path to the file
          */
-        File file = new File("src/main/resources/valuesResults.properties");
+
         try {
             /**
              * File creation
              */
-            BufferedWriter bw = new BufferedWriter(new FileWriter(file,true));
+            BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_PATH,true));
             /**
              * Write to file
              */
@@ -45,9 +44,10 @@ public class WiFiMetricsFileWiFiMetricsBuilderImpl implements WiFiMetricsBuilder
                     "Free space loss(FSL) = " + wiFiZoneMetricsCalculator.valuesFSL() + "\n" +
                     "The range of the Wi-Fi signal = " + wiFiZoneMetricsCalculator.length() + "\n");
             bw.flush();
-            return wiFiZoneMetricsCalculator;
         } catch (IOException e) {
-            LOG.info("Wrong path");
+            LOG.info("File could not be created path specified incorrectly");
+        } finally {
+            LOG.info("Completed");
         }
         return null;
     }

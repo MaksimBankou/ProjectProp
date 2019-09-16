@@ -1,5 +1,7 @@
 package by.gsu.com;
-
+/*
+This class reads values and writes to variables
+ */
 import by.gsu.com.Interface.WiFiMetricsFactory;
 
 import java.io.FileInputStream;
