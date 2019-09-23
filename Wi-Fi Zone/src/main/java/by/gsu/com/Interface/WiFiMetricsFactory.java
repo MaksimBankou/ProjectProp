@@ -1,11 +1,16 @@
 package by.gsu.com.Interface;
-/*
- * This interface creates a method to reads the file
- * */
+
 import by.gsu.com.WiFiZoneMetricsCalculator;
-/*
-This method to reads the file
+
+import java.util.Optional;
+
+/**
+ * This interface creates a method to reads the file
  */
 public interface WiFiMetricsFactory {
-    WiFiZoneMetricsCalculator getInstance();
+    /**
+     * This method to reads the file
+     * @return instance WiFiZoneMetricsCalculator
+     */
+    Optional <WiFiZoneMetricsCalculator> getInstance();
 }

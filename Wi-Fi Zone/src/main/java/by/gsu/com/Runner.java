@@ -6,7 +6,7 @@ import by.gsu.com.Interface.WiFiMetricsFactory;
 public class Runner {
     public static void main(String[] args) {
         WiFiMetricsFactory wiFiMetricsFactory = new WiFiMetricsFilePropertiesFactoryImpl("src/main/resources/values.properties");
-        WiFiMetricsBuilder wiFiMetricsBuilder = new WiFiMetricsFilePropertiesWiFiMetricsBuilderImpl(wiFiMetricsFactory.getInstance());
+        WiFiMetricsBuilder wiFiMetricsBuilder = new WiFiMetricsFilePropertiesBuilderImpl(wiFiMetricsFactory.getInstance().get());
         wiFiMetricsBuilder.build();
 
     }
